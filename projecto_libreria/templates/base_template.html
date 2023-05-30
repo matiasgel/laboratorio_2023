@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+{% load static %}
+
+
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{% static  'css/bootstrap.css' %}" rel="stylesheet">
+      <title>{%block titulo%} Libreria {%endblock%} </title>      
+    </head>
+    
+  <body>
+    {% include 'nav_bar.html' %}
+    <div name="content">
+        {%block contenido%}
+        llena esto 
+        {%endblock%}
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <footer class="text-center fixed-bottom bg-body-tertiary  text-bg-primary" data-bs-theme="dark">
+      <div>
+          <p>&copy; Laboratorio de Programación y Lenguajes </p>
+      </div>        
+      <div>
+          <a href="mailto:mgel@untdf.edu.ar">Profesor:  Matias Gel</a>
+      </div>      
+ </footer>
+
+    
+  
+  
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+  
+  </body>
+</html>

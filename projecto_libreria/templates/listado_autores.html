@@ -1,0 +1,20 @@
+{% extends 'base_template.html'%}
+{% block contenido %}
+{% comment  %}
+ver https://getbootstrap.com/docs/5.0/layout/grid/
+ver https://bootsnipp.com/snippets/rld
+ver https://stackoverflow.com/questions/20309593/django-template-to-populate-bootstrap-rows-and-columns
+{% endcomment %}
+{% for autor in page_obj %}
+    {{forloop.counter0}}
+    {% if forloop.first %}<div class="row">{% endif %}
+    {% if forloop.counter0|divisibleby:3%}
+    </div>
+    <div class="row">
+    {% endif %}
+    <div class="col">
+        {% include "autores/autor_card.html"%}
+    </div>    
+{% endfor %}
+    </div>
+{% endblock %}
