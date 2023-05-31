@@ -1,12 +1,15 @@
 {% extends 'base_template.html'%}
 {% block contenido %}
+
 {% comment  %}
 ver https://getbootstrap.com/docs/5.0/layout/grid/
 ver https://bootsnipp.com/snippets/rld
 ver https://stackoverflow.com/questions/20309593/django-template-to-populate-bootstrap-rows-and-columns
 {% endcomment %}
-{% for autor in page_obj %}
-    {{forloop.counter0}}
+<nav class="navbar navbar-light bg-light">
+    <a class="btn btn-primary" href="{% url 'autor-create' %}" role="button">Agregar un autor</a>
+</nav>
+{% for autor in page_obj %}    
     {% if forloop.first %}<div class="row">{% endif %}
     {% if forloop.counter0|divisibleby:3%}
     </div>

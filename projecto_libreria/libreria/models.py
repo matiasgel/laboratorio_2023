@@ -1,6 +1,9 @@
 from django.db import models
 import random
-from datetime import date, timedelta 
+from datetime import date, timedelta
+from django_countries.fields import CountryField
+
+from django.urls import reverse 
 
 # Create your models here.
 
@@ -17,11 +20,14 @@ class AutorManager(models.Manager):
       self.create(nombre="Autor " + str(i), nacionalidad = self.crear_nacionalidad(), fecha_nacimiento = self.crear_fecha(i))
       
 class Autor(models.Model):
-  foto = models.ImageField(upload_to="autores", default='nofoto.jpg')
+  foto = models.ImageField(upload_to="autores", default='autores/nofoto.jpg')
   objects = AutorManager()
   nombre = models.CharField(max_length=100)
-  nacionalidad = models.CharField(max_length=100)
+  nacionalidad = CountryField()
   fecha_nacimiento = models.DateField(default='--')
+  def get_absolute_url(self):
+      return reverse("autores-list")
+  
     
 class LibroManager(models.Manager):
   def crear_libro(self,cantidad):
